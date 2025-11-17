@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ogion — Performance, illuminated</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="hero">
+      <div class="glow glow-one"></div>
+      <div class="glow glow-two"></div>
+      <div class="noise-layer" aria-hidden="true"></div>
+
+      <header class="hero__nav">
+        <div class="logo-mark">
+          <span class="logo-spark"></span>
+          <span class="logo-type">Ogion</span>
+        </div>
+        <span class="beta-pill">Access coming soon</span>
+      </header>
+
+      <section class="hero__content">
+        <div class="eyebrow">Early waitlist</div>
+        <h1>Performance, illuminated</h1>
+        <p class="lead">
+          The future of lending is almost here. Ogion AI Intelligence brings depth,
+          not noise—built to see what others miss.
+        </p>
+        <form class="waitlist" id="waitlist-form">
+          <label class="sr-only" for="email-input">Email address</label>
+          <input
+            type="email"
+            id="email-input"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit">
+            Join waitlist
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <p class="footnote">No spam. First access when the lights switch on.</p>
+      </section>
+
+      <aside class="insight-card">
+        <div class="insight-card__header">
+          <span class="spark"></span>
+          <p>Signal over noise</p>
+        </div>
+        <div class="insight-card__body">
+          <p class="stat">98.2%</p>
+          <p class="caption">portfolio coverage with contextual AI insights.</p>
+        </div>
+      </aside>
+
+      <footer class="hero__footer">
+        <p>© Ogion 2024 · Privacy · Terms</p>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
