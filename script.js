@@ -1,6 +1,6 @@
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function BladeHero() {
+function RefinedHero() {
   const [email, setEmail] = React.useState("");
   const [status, setStatus] = React.useState("idle");
 
@@ -13,54 +13,44 @@ function BladeHero() {
 
     setStatus("success");
     setEmail("");
-    setTimeout(() => setStatus("idle"), 3600);
+    setTimeout(() => setStatus("idle"), 3200);
   };
 
-  const shellClass = [
-    "waitlist-shell",
-    status === "success" ? "success" : "",
-    status === "error" ? "error" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const ringClass =
+    status === "success"
+      ? "ring-2 ring-offset-2 ring-offset-white/70 ring-emerald-200"
+      : status === "error"
+      ? "ring-2 ring-offset-2 ring-offset-white/70 ring-rose-200"
+      : "ring-1 ring-offset-2 ring-offset-white/80 ring-slate-200/70";
 
   return (
-    <div className="scene">
-      <div className="layer-glow" aria-hidden="true"></div>
-      <div className="layer-grid" aria-hidden="true"></div>
-      <div className="layer-waves" aria-hidden="true">
-        <span className="iso-wave wave-one"></span>
-        <span className="iso-wave wave-two"></span>
-        <span className="iso-wave wave-three"></span>
+    <section className="canvas">
+      <div className="copy">
+        <p className="eyebrow">OGION</p>
+        <h1>Performance, illuminated</h1>
+        <p className="lede">
+          The future of lending is almost here. Ogion AI Intelligence brings depth, not noise, built to see what others
+          miss.
+        </p>
       </div>
-      <div className="layer-rail" aria-hidden="true"></div>
-      <div className="layer-corner" aria-hidden="true"></div>
 
-      <div className="center-stack">
-        <div className="cursor-dot" aria-hidden="true"></div>
-        <div className="copy-block">
-          <h1>Performance, illuminated</h1>
-          <p>The future of lending is almost here.</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className={shellClass}>
-          <label className="sr-only" htmlFor="waitlist-email">
-            Email address
-          </label>
-          <input
-            id="waitlist-email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-          <button type="submit">Join waitlist</button>
-        </form>
-      </div>
-    </div>
+      <form onSubmit={handleSubmit} className={`waitlist-shell ${ringClass}`}>
+        <label htmlFor="waitlist-email" className="sr-only">
+          Email address
+        </label>
+        <input
+          id="waitlist-email"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Join waitlist</button>
+      </form>
+    </section>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<BladeHero />);
+root.render(<RefinedHero />);

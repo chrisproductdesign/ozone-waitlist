@@ -25,17 +25,17 @@ Two explorations live in `concepts/` so you can flip between themes quickly whil
 - Notes: reuses the minimal halo copy but removes the foreground badge, enhances the orb loop, and adds a subtle pointer-driven parallax shift.
 - Preview: `http://localhost:8000/concepts/concept-five-parallax/`.
 
-## Concept six – refined halo hero
-- Files: `concepts/concept-six-trendline/index.html`, `styles.css`, `script.js`
+## Concept six – refined halo hero (current root)
+- Files: `index.html`, `styles.css`, `script.js`
 - Stack: React + Tailwind CDN with custom CSS for the ambient halo.
 - Notes: distilled typography hierarchy, centered form, and a simplified luminous background ring for a calm premium look.
-- Preview: `http://localhost:8000/concepts/concept-six-trendline/`.
+- Preview: `http://localhost:8000/` (or open `index.html` directly if you're not running the local server).
 
-## Concept four – angular rail concept (current root)
-- Files: `index.html`, `styles.css`, `script.js`
+## Concept four – angular rail concept
+- Files: `concepts/concept-four-rail/index.html`, `styles.css`, `script.js`
 - Stack: React + Tailwind CDN; asymmetrical layout with grid/rail animations tailored for fintech lending tooling.
 - Notes: text remains minimal while the form anchors to a right-aligned rail with subtle cursor/pillar motion.
-- Preview: `http://localhost:8000/` (or open `index.html` directly if you’re not running the local server).
+- Preview: `http://localhost:8000/concepts/concept-four-rail/` when the local server is running.
 
 ## Concept gallery – dropdown navigator
 - Files: `concepts/concept-gallery/index.html`, `styles.css`, `script.js`

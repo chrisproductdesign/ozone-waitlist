@@ -1,98 +1,25 @@
 :root {
-  --ink: #05060c;
-  --bg: #f6f4f0;
-  --muted: rgba(5, 6, 12, 0.55);
-  --surface: rgba(255, 255, 255, 0.82);
+  --ink: #0f1527;
+  --muted: rgba(15, 21, 39, 0.6);
+  --panel: rgba(255, 255, 255, 0.9);
+  --haze: rgba(99, 109, 255, 0.25);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(180deg, #f7f8ff, #f5f1eb);
+  background: #f7f8ff;
   color: var(--ink);
 }
 
-.scene {
-  position: relative;
+.canvas {
   min-height: 100vh;
-  overflow: hidden;
-  padding: clamp(2rem, 5vw, 4rem);
-}
-
-.layer-grid,
-.layer-glow,
-.layer-waves {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.layer-grid {
-  background-image: linear-gradient(rgba(5, 5, 15, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(5, 5, 15, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.65;
-  animation: pan-grid 12s linear infinite;
-}
-
-.layer-glow {
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.5), transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(217, 227, 255, 0.35), transparent 60%);
-}
-
-.layer-waves {
-  overflow: hidden;
-}
-
-.iso-wave {
-  position: absolute;
-  width: 180%;
-  height: 45%;
-  left: -20%;
-  background: linear-gradient(120deg, rgba(93, 115, 255, 0.25), rgba(245, 248, 255, 0.05));
-  opacity: 0.6;
-  filter: blur(12px);
-  mix-blend-mode: normal;
-  --angle: -6deg;
-  --start: -8%;
-  --end: 8%;
-  --duration: 16s;
-  --delay: 0s;
-  animation: slide-wave var(--duration) ease-in-out infinite;
-  animation-delay: var(--delay);
-}
-
-.iso-wave.wave-one {
-  top: -5%;
-  --angle: -4deg;
-  --duration: 14s;
-}
-
-.iso-wave.wave-two {
-  top: 35%;
-  --angle: -9deg;
-  --duration: 18s;
-  --delay: -5s;
-  opacity: 0.4;
-}
-
-.iso-wave.wave-three {
-  bottom: -12%;
-  --angle: -14deg;
-  --duration: 20s;
-  --delay: -9s;
-  opacity: 0.45;
-  background: linear-gradient(120deg, rgba(72, 86, 255, 0.2), rgba(255, 255, 255, 0));
-}
-
-
-.center-stack {
-  position: relative;
-  z-index: 1;
-  max-width: 560px;
-  margin: 0 auto;
-  min-height: calc(100vh - clamp(4rem, 10vw, 8rem));
+  padding: clamp(2rem, 5vw, 5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,139 +28,90 @@ body {
   gap: 2rem;
 }
 
-
-.copy-block {
+.copy {
+  z-index: 1;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.copy-block h1 {
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(15, 21, 39, 0.55);
+  margin: 0;
+}
+
+.copy h1 {
   font-family: "Space Grotesk", "Inter", sans-serif;
-  font-size: clamp(3rem, 7vw, 5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1.04;
   margin: 0;
 }
 
-.copy-block p {
+.copy .lede {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--muted);
+  line-height: 1.5;
 }
 
 .waitlist-shell {
+  z-index: 1;
+  width: min(440px, 100%);
   display: flex;
-  gap: 0.75rem;
-  width: min(460px, 90vw);
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid rgba(5, 6, 12, 0.1);
+  gap: 0.35rem;
   padding: 0.4rem;
-  box-shadow: 0 25px 60px rgba(5, 6, 12, 0.1);
-  backdrop-filter: blur(16px);
-  transition: border-color 220ms ease, box-shadow 220ms ease;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  border: 1px solid rgba(15, 21, 39, 0.1);
+  box-shadow: 0 18px 40px rgba(15, 21, 39, 0.1);
+  backdrop-filter: blur(14px);
+  align-items: center;
 }
 
 .waitlist-shell input {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 0.9rem 1.25rem;
-  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  border-right: 1px solid rgba(15, 21, 39, 0.08);
 }
 
 .waitlist-shell input::placeholder {
-  color: rgba(5, 6, 12, 0.35);
+  color: rgba(15, 21, 39, 0.4);
 }
 
 .waitlist-shell button {
   border: none;
-  border-radius: 999px;
-  padding: 0.9rem 1.8rem;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.45em;
-  background: #05060c;
+  border-radius: 12px;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  background: var(--ink);
   color: white;
   cursor: pointer;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .waitlist-shell button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 15px 25px rgba(5, 6, 12, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(15, 21, 39, 0.25);
 }
 
-.waitlist-shell.success {
-  border-color: rgba(34, 197, 94, 0.5);
-}
-
-.waitlist-shell.error {
-  border-color: rgba(244, 63, 94, 0.5);
-}
-
-.cursor-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1px solid rgba(5, 6, 12, 0.4);
-  position: relative;
-  animation: blink 1.4s steps(2, start) infinite;
-}
-
-.cursor-dot::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  background: rgba(5, 6, 12, 0.7);
-}
-
-@keyframes pan-grid {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 80px 80px, 80px 0;
-  }
-}
-
-@keyframes slide-wave {
-  0% {
-    transform: rotate(var(--angle)) translate3d(0, var(--start), 0);
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.55;
-  }
-  100% {
-    transform: rotate(var(--angle)) translate3d(0, var(--end), 0);
-    opacity: 0.2;
-  }
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   .waitlist-shell {
     flex-direction: column;
   }
 }
-
-
-
-/* radial ripple removed for isometric wave concept */
 
 .sr-only {
   position: absolute;
