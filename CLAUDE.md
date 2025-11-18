@@ -74,7 +74,28 @@ M  styles.css     # Contains ribbon, pulse, and animation keyframes
 ?? CLAUDE.md      # This documentation file (untracked)
 ```
 
-**Status**: Latest animated version exists in root but is **not yet committed**. Git setup and commit strategy pending.
+**Status**: Latest animated version committed to main (commit 963fae2).
+
+### Git Branch Structure
+
+**Active Branches:**
+- `main` - Production branch with latest AnimatedBackground implementation
+- `cursor/bg-animation-iter` - Hero card variant (concept-seven-hero-card source, commit 68b3e0f)
+- `cursor/bg-animation-sm0c4` - Earlier iteration (commit 75597a7)
+
+**Concept Branches (Historical):**
+- `concept-one`, `concept-two-react`, `concept-two-kinetic`
+- `concept-three-halo`, `concept-four-rail`, `concept-five-parallax`
+- `concept-six-trendline`, `concept-gallery`
+
+**Cursor Exploration Branches (Archived):**
+All prefixed with `cursor/` to distinguish from active development:
+- `cursor/animated-bg-FWK5h`, `cursor/animated-bg-FtGtk`, `cursor/animated-bg-SzDag`, `cursor/animated-bg-vMD8j`
+- `cursor/bg-animation-gA3Eq`
+- `cursor/modern-animated-bg-4Z3OK`
+- `cursor/waitlist-bg-IQfQ6`, `cursor/waitlist-bg-izFHs`, `cursor/waitlist-bg-loop-tVQQa`
+
+**Note**: Cursor worktrees have been removed. All work is preserved in branches.
 
 ### Archived Concepts (Static Snapshots)
 - `concepts/concept-six-trendline/` = **older snapshot** (no AnimatedBackground, static blue bg only)
