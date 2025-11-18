@@ -258,22 +258,6 @@ body {
   animation-delay: var(--ribbon-delay, 0s);
 }
 
-.pulse-field {
-  position: absolute;
-  inset: 0;
-}
-
-.pulse {
-  position: absolute;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(99, 102, 241, 0.35));
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.35);
-  --exit-x: 0vw;
-  --exit-y: 0vh;
-  transform: translate(-50%, -50%);
-  animation: flyForward 10s linear infinite;
-}
-
 .focus-ring {
   position: absolute;
   width: 45%;
@@ -311,23 +295,6 @@ body {
   100% {
     transform: translateY(-48%) rotate(var(--ribbon-rotation, 0deg)) scale(1);
     opacity: 0.3;
-  }
-}
-
-@keyframes flyForward {
-  0% {
-    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(0.5);
-    opacity: 0.3;
-  }
-  10% {
-    opacity: 0.7;
-  }
-  40% {
-    transform: translate(-50%, -50%) translate3d(calc(var(--exit-x) * 0.5), calc(var(--exit-y) * 0.5), 0) scale(1.8);
-  }
-  100% {
-    transform: translate(-50%, -50%) translate3d(var(--exit-x), var(--exit-y), 0) scale(3.5);
-    opacity: 0;
   }
 }
 

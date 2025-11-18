@@ -16,35 +16,6 @@ function AnimatedBackground() {
     []
   );
 
-  const pulses = React.useMemo(
-    () => {
-      // 8 exit directions: top, top-right, right, bottom-right, bottom, bottom-left, left, top-left
-      const directions = [
-        { x: 0, y: -65 },       // top
-        { x: 60, y: -60 },      // top-right
-        { x: 65, y: 0 },        // right
-        { x: 60, y: 60 },       // bottom-right
-        { x: 0, y: 65 },        // bottom
-        { x: -60, y: 60 },      // bottom-left
-        { x: -65, y: 0 },       // left
-        { x: -60, y: -60 },     // top-left
-      ];
-
-      return Array.from({ length: 10 }, (_, index) => {
-        const direction = directions[Math.floor(Math.random() * directions.length)];
-        return {
-          id: index,
-          size: 12 + Math.random() * 8,
-          exitX: direction.x,
-          exitY: direction.y,
-          delay: Math.random() * -12,
-          duration: 8 + Math.random() * 6,
-        };
-      });
-    },
-    []
-  );
-
   const gradients = React.useMemo(
     () =>
       [
@@ -88,25 +59,6 @@ function AnimatedBackground() {
               "--ribbon-duration": `${ribbon.duration}s`,
               "--ribbon-hue": ribbon.hue,
               "--ribbon-glow": ribbon.glow,
-            }}
-          ></span>
-        ))}
-      </div>
-
-      <div className="pulse-field" aria-hidden="true">
-        {pulses.map((pulse) => (
-          <span
-            key={pulse.id}
-            className="pulse"
-            style={{
-              left: "50%",
-              top: "50%",
-              width: `${pulse.size}px`,
-              height: `${pulse.size}px`,
-              "--exit-x": `${pulse.exitX}vw`,
-              "--exit-y": `${pulse.exitY}vh`,
-              animationDelay: `${pulse.delay}s`,
-              animationDuration: `${pulse.duration}s`,
             }}
           ></span>
         ))}
