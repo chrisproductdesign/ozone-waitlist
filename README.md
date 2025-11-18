@@ -31,6 +31,12 @@ Two explorations live in `concepts/` so you can flip between themes quickly whil
 - Notes: distilled typography hierarchy, centered form, and a simplified luminous background ring for a calm premium look.
 - Preview: `http://localhost:8000/` (or open `index.html` directly if you're not running the local server).
 
+## Concept seven – hero card with luxe animated background
+- Files: `concepts/concept-seven-hero-card/index.html`, `styles.css`, `script.js`
+- Stack: React + Tailwind CDN with advanced animated background system.
+- Notes: 14 particle orbs with variable depth/blur, 3 drifting gradients, center veil + core glow layers, and a `.hero-surface` glassmorphic card wrapper containing the hero content. More elaborate than root version.
+- Preview: `http://localhost:8000/concepts/concept-seven-hero-card/` when the local server is running.
+
 ## Concept four – angular rail concept
 - Files: `concepts/concept-four-rail/index.html`, `styles.css`, `script.js`
 - Stack: React + Tailwind CDN; asymmetrical layout with grid/rail animations tailored for fintech lending tooling.

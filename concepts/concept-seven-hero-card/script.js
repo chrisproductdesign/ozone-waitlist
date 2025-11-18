@@ -18,15 +18,17 @@ function AnimatedBackground() {
 
   const pulses = React.useMemo(
     () =>
-      Array.from({ length: 10 }, (_, index) => ({
+      Array.from({ length: 14 }, (_, index) => ({
         id: index,
-        x: 5 + Math.random() * 90,
-        y: 5 + Math.random() * 90,
-        size: 5 + Math.random() * 12,
-        shiftX: (Math.random() - 0.5) * 120,
-        shiftY: (Math.random() - 0.5) * 120,
-        delay: Math.random() * -10,
-        duration: 7 + Math.random() * 5,
+        x: 8 + Math.random() * 84,
+        y: 8 + Math.random() * 84,
+        size: 18 + Math.random() * 44,
+        shiftX: (Math.random() - 0.5) * 220,
+        shiftY: (Math.random() - 0.5) * 220,
+        depth: 0.25 + Math.random() * 0.65,
+        blur: 20 + Math.random() * 36,
+        delay: Math.random() * -6,
+        duration: 3 + Math.random() * 3,
       })),
     []
   );
@@ -34,8 +36,9 @@ function AnimatedBackground() {
   const gradients = React.useMemo(
     () =>
       [
-        { id: "north", rotate: "-18deg", opacity: 0.95, shiftX: "-80px", shiftY: "-40px", scale: 1.05 },
-        { id: "south", rotate: "10deg", opacity: 0.7, shiftX: "120px", shiftY: "60px", scale: 1.1 },
+        { id: "north", rotate: "-25deg", opacity: 0.9, shiftX: "-320px", shiftY: "-180px", scale: 1.15 },
+        { id: "south", rotate: "14deg", opacity: 0.75, shiftX: "340px", shiftY: "260px", scale: 1.2 },
+        { id: "west", rotate: "-8deg", opacity: 0.6, shiftX: "-360px", shiftY: "240px", scale: 1.05 },
       ],
     []
   );
@@ -43,6 +46,8 @@ function AnimatedBackground() {
   return (
     <div className="animated-background lux-bg">
       <div className="grain-overlay" aria-hidden="true"></div>
+      <div className="center-veil" aria-hidden="true"></div>
+      <div className="core-glow" aria-hidden="true"></div>
 
       {gradients.map((gradient) => (
         <div
@@ -88,6 +93,8 @@ function AnimatedBackground() {
               height: `${pulse.size}px`,
               "--pulse-shift-x": `${pulse.shiftX}px`,
               "--pulse-shift-y": `${pulse.shiftY}px`,
+              "--pulse-depth": pulse.depth,
+              "--pulse-blur": `${pulse.blur}px`,
               animationDelay: `${pulse.delay}s`,
               animationDuration: `${pulse.duration}s`,
             }}
@@ -135,30 +142,31 @@ function RefinedHero() {
   return (
     <section className="canvas">
       <AnimatedBackground />
+      <div className="hero-surface">
+        <div className="copy">
+          <p className="eyebrow">OGION</p>
+          <h1>Performance, illuminated</h1>
+          <p className="lede">
+            The future of lending is almost here. Ogion AI Intelligence brings depth, not noise, built to see what others
+            miss.
+          </p>
+        </div>
 
-      <div className="copy">
-        <p className="eyebrow">OGION</p>
-        <h1>Performance, illuminated</h1>
-        <p className="lede">
-          The future of lending is almost here. Ogion AI Intelligence brings depth, not noise, built to see what others
-          miss.
-        </p>
+        <form onSubmit={handleSubmit} className={`waitlist-shell ${ringClass}`}>
+          <label htmlFor="waitlist-email" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="waitlist-email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Enter your email"
+            required
+          />
+          <button type="submit">Join waitlist</button>
+        </form>
       </div>
-
-      <form onSubmit={handleSubmit} className={`waitlist-shell ${ringClass}`}>
-        <label htmlFor="waitlist-email" className="sr-only">
-          Email address
-        </label>
-        <input
-          id="waitlist-email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Enter your email"
-          required
-        />
-        <button type="submit">Join waitlist</button>
-      </form>
     </section>
   );
 }
