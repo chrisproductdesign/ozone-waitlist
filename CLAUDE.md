@@ -256,6 +256,30 @@ const [status, setStatus] = useState("idle"); // idle | success | error
 - Use pure saturated colors (prefer soft, blended tones)
 - Overuse `z-index` (blend modes create natural depth)
 
+## Design Modification Rules
+
+**⚠️ CRITICAL: Do NOT modify visual design without explicit instruction**
+
+When working on this codebase:
+
+**DO:**
+- Fix functional bugs (broken layouts, missing elements, non-working features)
+- Follow explicit user instructions exactly as stated
+- Preserve existing visual decisions (colors, spacing, animations, blend modes, gradients)
+- Ask clarifying questions before making any visual changes
+- Match existing patterns when adding new features
+
+**DO NOT:**
+- Add your own "improvements" to colors, spacing, or visual effects
+- Change animation timings, easing, or durations unless asked
+- Modify blend modes, gradients, or opacity values for "aesthetic" reasons
+- Simplify or "clean up" working visual code
+- Apply your own design preferences or "flare"
+
+**Why:** The original visual code (created by Cursor AI) has superior design sensibility. Your role is to preserve and maintain that aesthetic, not to replace it with your own approach.
+
+**When in doubt:** Ask the user first. If something looks wrong to you but works, it's probably intentional.
+
 ## Visual Design Principles
 
 - **Light mode**: Background `#f6f7ff` to `#f7f8ff`, text `#0f1527` to `#04050f`
