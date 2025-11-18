@@ -17,19 +17,31 @@ function AnimatedBackground() {
   );
 
   const pulses = React.useMemo(
-    () =>
-      Array.from({ length: 14 }, (_, index) => ({
-        id: index,
-        x: 8 + Math.random() * 84,
-        y: 8 + Math.random() * 84,
-        size: 18 + Math.random() * 44,
-        shiftX: (Math.random() - 0.5) * 220,
-        shiftY: (Math.random() - 0.5) * 220,
-        depth: 0.25 + Math.random() * 0.65,
-        blur: 20 + Math.random() * 36,
-        delay: Math.random() * -6,
-        duration: 3 + Math.random() * 3,
-      })),
+    () => {
+      // 8 exit directions: top, top-right, right, bottom-right, bottom, bottom-left, left, top-left
+      const directions = [
+        { x: 0, y: -65 },       // top
+        { x: 60, y: -60 },      // top-right
+        { x: 65, y: 0 },        // right
+        { x: 60, y: 60 },       // bottom-right
+        { x: 0, y: 65 },        // bottom
+        { x: -60, y: 60 },      // bottom-left
+        { x: -65, y: 0 },       // left
+        { x: -60, y: -60 },     // top-left
+      ];
+
+      return Array.from({ length: 10 }, (_, index) => {
+        const direction = directions[Math.floor(Math.random() * directions.length)];
+        return {
+          id: index,
+          size: 12 + Math.random() * 8,
+          exitX: direction.x,
+          exitY: direction.y,
+          delay: Math.random() * -12,
+          duration: 8 + Math.random() * 6,
+        };
+      });
+    },
     []
   );
 
@@ -87,14 +99,12 @@ function AnimatedBackground() {
             key={pulse.id}
             className="pulse"
             style={{
-              left: `${pulse.x}%`,
-              top: `${pulse.y}%`,
+              left: "50%",
+              top: "50%",
               width: `${pulse.size}px`,
               height: `${pulse.size}px`,
-              "--pulse-shift-x": `${pulse.shiftX}px`,
-              "--pulse-shift-y": `${pulse.shiftY}px`,
-              "--pulse-depth": pulse.depth,
-              "--pulse-blur": `${pulse.blur}px`,
+              "--exit-x": `${pulse.exitX}vw`,
+              "--exit-y": `${pulse.exitY}vh`,
               animationDelay: `${pulse.delay}s`,
               animationDuration: `${pulse.duration}s`,
             }}
