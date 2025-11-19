@@ -53,6 +53,56 @@ npx serve concepts/concept-name
 - Visual QA is done manually in-browser
 - Test responsive breakpoints: ~360px (mobile), 768px (tablet), 1280px+ (desktop)
 
+## Recent Session Work (2025-11-18)
+
+### Concept-Seven-Hero-Card Development
+
+**Created from sm0c4-iter backup:**
+- Completed concept with index.html, script.js, styles.css
+- Features: Hero surface glassmorphic card, 3 gradients, center veil/core glow
+- Preserved from Cursor worktree `feat-bg-animation-iter` (commit 68b3e0f)
+
+**Layout fixes applied:**
+- Fixed hero-surface: added flex column layout with gap
+- Fixed waitlist-shell: removed `mix-blend-mode: screen`, simplified background
+- Form now properly centered with visible input/button
+
+**Orb experiments (branches preserved):**
+- `fix/hero-card-layout`: Flying orbs effect (toward viewer, exit edges)
+- `remove-orbs`: Clean version without orbs (ribbons only)
+
+**✅ Ribbon opacity ramp (WORKING SOLUTION):**
+Located in `concepts/concept-seven-hero-card/styles.css` lines 247-256
+
+```css
+background: linear-gradient(
+  105deg,
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 0%,    /* Opaque at edge */
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.5) 25%,
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.3) 40%,
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0) 50%,     /* Transparent center */
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.3) 60%,
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.5) 75%,
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 100%   /* Opaque at edge */
+);
+```
+
+**Key:** Alpha forms V-shape (0.7 → 0 → 0.7). Ribbons invisible in screen center, visible/opaque at edges. Colors stay consistent (80% saturation, 80% lightness). ONLY alpha changes per user direction.
+
+### Git Structure Cleanup
+
+**Removed 8 Cursor worktrees:**
+- All worktrees deleted, branches preserved
+- Branches renamed with `cursor/` prefix for organization
+- Total: 20 branches (main, 8 concept branches, 11 cursor exploration branches)
+
+**Active branches:**
+- `main`: Latest root with AnimatedBackground
+- `remove-orbs`: Clean hero-card without particles
+- `fix/hero-card-layout`: Hero-card with flying orbs (for team review)
+
+---
+
 ## Current State & Git Status
 
 **⚠️ IMPORTANT: Root files contain the LATEST version with animations**
