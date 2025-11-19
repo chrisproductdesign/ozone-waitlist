@@ -81,6 +81,7 @@ function AnimatedBackground() {
 function RefinedHero() {
   const [email, setEmail] = React.useState("");
   const [status, setStatus] = React.useState("idle");
+  const [showConfirmation, setShowConfirmation] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -91,7 +92,10 @@ function RefinedHero() {
 
     setStatus("success");
     setEmail("");
+    setShowConfirmation(true);
+
     setTimeout(() => setStatus("idle"), 3200);
+    setTimeout(() => setShowConfirmation(false), 5000);
   };
 
   const ringClass =
@@ -104,31 +108,33 @@ function RefinedHero() {
   return (
     <section className="canvas">
       <AnimatedBackground />
-      <div className="hero-surface">
-        <div className="copy">
-          <p className="eyebrow">OGION</p>
-          <h1>Performance, illuminated</h1>
-          <p className="lede">
-            The future of lending is almost here. Ogion AI Intelligence brings depth, not noise, built to see what others
-            miss.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className={`waitlist-shell ${ringClass}`}>
-          <label htmlFor="waitlist-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="waitlist-email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-          <button type="submit">Join waitlist</button>
-        </form>
+      <div className="copy">
+        <p className="eyebrow">OGION</p>
+        <h1>Performance, illuminated</h1>
+        <p className="lede">
+          The future of lending is almost here. Ogion AI Intelligence brings depth, not noise, built to see what others
+          miss.
+        </p>
       </div>
+
+      <form onSubmit={handleSubmit} className={`waitlist-shell ${ringClass}`}>
+        <label htmlFor="waitlist-email" className="sr-only">
+          Email address
+        </label>
+        <input
+          id="waitlist-email"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Join waitlist</button>
+      </form>
+
+      <p className={`confirmation-message ${showConfirmation ? 'visible' : ''}`}>
+        You're on the list. We'll be in touch soon.
+      </p>
     </section>
   );
 }
