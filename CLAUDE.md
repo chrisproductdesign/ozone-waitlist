@@ -53,9 +53,9 @@ npx serve concepts/concept-name
 - Visual QA is done manually in-browser
 - Test responsive breakpoints: ~360px (mobile), 768px (tablet), 1280px+ (desktop)
 
-## Recent Session Work (2025-11-18)
+## Recent Session Work (2025-11-18 & 2025-11-20)
 
-### Concept-Seven-Hero-Card Development
+### Concept-Seven-Hero-Card Development (Session 1: 2025-11-18)
 
 **Created from sm0c4-iter backup:**
 - Completed concept with index.html, script.js, styles.css
@@ -71,25 +71,69 @@ npx serve concepts/concept-name
 - `fix/hero-card-layout`: Flying orbs effect (toward viewer, exit edges)
 - `remove-orbs`: Clean version without orbs (ribbons only)
 
-**✅ Ribbon opacity ramp (WORKING SOLUTION):**
-Located in `concepts/concept-seven-hero-card/styles.css` lines 247-256
+**✅ Ribbon opacity ramp (INITIAL SOLUTION):**
+Located in `concepts/concept-seven-hero-card/styles.css`
 
+Alpha forms V-shape (0.7 → 0 → 0.7). Ribbons invisible in screen center, visible/opaque at edges. Colors stay consistent (80% saturation, 80% lightness). ONLY alpha changes per user direction.
+
+### Concept-Seven Finalization (Session 2: 2025-11-20)
+
+**Branch**: `remove-orbs` (commit 56fea4d)
+**Location**: `concepts/concept-seven-hero-card/`
+
+**Changes made:**
+
+1. **Removed hero-surface card wrapper**
+   - Eliminated glassmorphic card container
+   - Content now renders directly to `.canvas` for cleaner layout
+   - Fixed `.canvas` layout: added `flex-direction: column` and `gap: 2rem`
+
+2. **OGION eyebrow typography refinement**
+   - `font-weight: 600` (Semibold, was 400)
+   - `letter-spacing: 0.24em` (was 0.3em for better balance)
+
+3. **Ribbon opacity ramp adjustment**
+   - Center alpha changed from `0` (fully transparent) to `0.05` (5% opacity)
+   - Located at `styles.css` line 255
+   - Ribbons now subtly visible in screen center
+
+4. **Confirmation message animation**
+   - Displays after email submission: "You're on the list. We'll be in touch soon."
+   - Always rendered in DOM (prevents layout shift)
+   - Smooth 5-second animation: fade in (0.4s) → hold (4.25s) → fade out (0.75s)
+   - Matches `.lede` text size (1.05rem)
+   - Uses `@keyframes confirmationFade` with `translateY` motion
+   - State: `showConfirmation` boolean with 5s timeout
+
+**Final ribbon gradient** (`styles.css` lines 250-259):
 ```css
 background: linear-gradient(
   105deg,
-  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 0%,    /* Opaque at edge */
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 0%,
   hsla(var(--ribbon-hue, 218), 80%, 80%, 0.5) 25%,
   hsla(var(--ribbon-hue, 218), 80%, 80%, 0.3) 40%,
-  hsla(var(--ribbon-hue, 218), 80%, 80%, 0) 50%,     /* Transparent center */
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.05) 50%,  /* 5% center opacity */
   hsla(var(--ribbon-hue, 218), 80%, 80%, 0.3) 60%,
   hsla(var(--ribbon-hue, 218), 80%, 80%, 0.5) 75%,
-  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 100%   /* Opaque at edge */
+  hsla(var(--ribbon-hue, 218), 80%, 80%, 0.7) 100%
 );
 ```
 
-**Key:** Alpha forms V-shape (0.7 → 0 → 0.7). Ribbons invisible in screen center, visible/opaque at edges. Colors stay consistent (80% saturation, 80% lightness). ONLY alpha changes per user direction.
+### GitHub Deployment
 
-### Git Structure Cleanup
+**Repository**: https://github.com/chrisproductdesign/ozone-waitlist
+**Live site**: https://chrisproductdesign.github.io/ozone-waitlist/
+
+**Branches pushed:**
+- `main`: Original root with AnimatedBackground + orbs
+- `remove-orbs`: Finalized concept-seven (latest work)
+- `gh-pages`: Deployment branch with concept-seven at root
+
+**Files deployed** (gh-pages branch):
+- `index.html`, `styles.css`, `script.js` from `concepts/concept-seven-hero-card/`
+- Clean deployment with only production files (no docs, no other concepts)
+
+### Git Structure Cleanup (Session 1)
 
 **Removed 8 Cursor worktrees:**
 - All worktrees deleted, branches preserved
@@ -97,9 +141,10 @@ background: linear-gradient(
 - Total: 20 branches (main, 8 concept branches, 11 cursor exploration branches)
 
 **Active branches:**
-- `main`: Latest root with AnimatedBackground
-- `remove-orbs`: Clean hero-card without particles
-- `fix/hero-card-layout`: Hero-card with flying orbs (for team review)
+- `main`: Root with AnimatedBackground + orbs
+- `remove-orbs`: **PRODUCTION VERSION** - concept-seven finalized (commit 56fea4d)
+- `fix/hero-card-layout`: Hero-card with flying orbs (archived experiment)
+- `gh-pages`: GitHub Pages deployment branch
 
 ---
 
